@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /contact
+
+# Keep auth, private, and app pages out of the index
+Disallow: /login
+Disallow: /signup
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /dashboard
+Disallow: /trips
+Disallow: /profile
+Disallow: /master-admin
+
+Sitemap: https://travelbuzz.ai/sitemap.xml

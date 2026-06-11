@@ -1,0 +1,48 @@
+Options -MultiViews
+RewriteEngine On
+
+# ── SPA routing: send all non-file requests to index.html ──────────────────
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [QSA,L]
+
+# ── Gzip compression ───────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript
+    AddOutputFilterByType DEFLATE application/javascript application/json
+    AddOutputFilterByType DEFLATE image/svg+xml font/woff2
+</IfModule>
+
+# ── Browser caching ────────────────────────────────────────────────────────
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # Hashed assets (JS/CSS with content hash in filename) — cache 1 year
+    <FilesMatch "\.[0-9a-f]{8}\.(js|css)$">
+        ExpiresDefault "access plus 1 year"
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+    # index.html — never cache so new deploys take effect immediately
+    <FilesMatch "^index\.html$">
+        ExpiresDefault "access plus 0 seconds"
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+    </FilesMatch>
+
+    # sw.js — no cache (service worker must always be fresh)
+    <FilesMatch "^sw\.js$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+    </FilesMatch>
+
+    # Icons, manifest — 1 day
+    <FilesMatch "\.(png|svg|ico|webmanifest|json)$">
+        ExpiresDefault "access plus 1 day"
+    </FilesMatch>
+</IfModule>
+
+# ── Security headers ───────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

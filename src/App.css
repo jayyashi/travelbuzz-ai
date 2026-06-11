@@ -1,0 +1,368 @@
+/* Trip Details Styles */
+
+.breadcrumbs {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-bottom: var(--space-s);
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+    color: var(--primary);
+}
+
+.trip-meta-row {
+    display: flex;
+    gap: var(--space-m);
+    margin-top: var(--space-s);
+    color: var(--text-light);
+    align-items: center;
+    background: var(--surface);
+    padding: var(--space-s);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-sm);
+    display: inline-flex;
+    border: 1px solid var(--border);
+}
+
+.trip-meta-row span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: var(--text);
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: var(--space-s);
+    border-bottom: 2px solid var(--border);
+    margin-bottom: var(--space-l);
+    margin-top: var(--space-m);
+}
+
+.tab {
+    padding: 0.75rem 1.5rem;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-light);
+    font-size: 1rem;
+    transition: all 0.2s;
+    margin-bottom: -2px;
+}
+
+.tab:hover {
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tab.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Connector Line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 119px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+    z-index: 0;
+}
+
+.timeline-day {
+    display: flex;
+    gap: var(--space-l);
+    margin-bottom: var(--space-xl);
+    position: relative;
+    z-index: 1;
+}
+
+.day-header {
+    width: 100px;
+    text-align: right;
+    flex-shrink: 0;
+    position: relative;
+    padding-top: var(--space-s);
+}
+
+.day-number {
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--secondary);
+    /* Pink for pop */
+    line-height: 1;
+    margin-bottom: 0.25rem;
+    text-shadow: 0 0 10px rgba(244, 114, 182, 0.3);
+}
+
+.day-date {
+    color: var(--text-light);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.delete-day-btn {
+    position: absolute;
+    top: -5px;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    opacity: 0.3;
+}
+
+.timeline-day:hover .delete-day-btn {
+    opacity: 1;
+}
+
+.delete-day-btn:hover {
+    color: var(--error);
+    background: rgba(248, 113, 113, 0.1);
+    border-color: rgba(248, 113, 113, 0.2);
+}
+
+.day-activities {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    padding-left: var(--space-m);
+    padding-bottom: var(--space-l);
+}
+
+.activity-card {
+    background: var(--surface);
+    border-radius: var(--radius-m);
+    padding: var(--space-m);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    gap: var(--space-m);
+    border: 1px solid var(--border);
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.activity-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.15);
+    /* Primary glow */
+    border-color: var(--primary);
+}
+
+.time-dot {
+    position: absolute;
+    left: -56px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--background);
+    /* Match page bg */
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    z-index: 2;
+    box-shadow: 0 0 0 4px var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+}
+
+.activity-thumb {
+    width: 120px;
+    height: 120px;
+    border-radius: var(--radius-s);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.activity-details {
+    flex: 1;
+}
+
+.activity-details h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+    color: var(--text);
+}
+
+.activity-details p {
+    color: var(--text-light);
+}
+
+/* Page Header Actions */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-l);
+    background: transparent;
+    padding: var(--space-l) 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.page-header h1 {
+    color: var(--text);
+}
+
+.page-header .actions {
+    display: flex;
+    gap: var(--space-s);
+}
+
+/* ── Timeline: mobile responsive ─────────────────────────── */
+@media (max-width: 640px) {
+
+    /* Remove vertical spine line */
+    .timeline::before { display: none; }
+
+    /* Stack day-header above activities */
+    .timeline-day {
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: var(--space-l);
+    }
+
+    /* Day header becomes a compact horizontal strip */
+    .day-header {
+        width: 100%;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        margin-bottom: 10px;
+        background: rgba(255,255,255,0.03);
+        border-radius: 10px 10px 0 0;
+        border: 1px solid var(--border);
+        border-bottom: none;
+    }
+
+    .day-number {
+        font-size: 0.95rem;
+        margin-bottom: 0;
+    }
+
+    .day-date {
+        font-size: 0.8rem;
+        flex: 1;
+    }
+
+    /* Keep delete btn visible and inside the strip */
+    .delete-day-btn {
+        position: static;
+        opacity: 1;
+        margin-left: auto;
+    }
+
+    /* Activities: remove left offset, add left border as subtle guide */
+    .day-activities {
+        padding-left: 0;
+        padding-bottom: var(--space-m);
+        border-left: none;
+    }
+
+    /* Time dot: move from left-overflow to top-right badge */
+    .time-dot {
+        position: absolute;
+        left: auto !important;
+        right: 10px;
+        top: 12px;
+        transform: none;
+        width: auto;
+        min-width: 44px;
+        height: auto;
+        padding: 3px 8px;
+        border-radius: 20px;
+        font-size: 0.68rem;
+        box-shadow: none;
+    }
+
+    /* Activity card: wrap so actions drop below content; keep right gap for time badge */
+    .activity-card {
+        flex-wrap: wrap !important;
+        align-items: flex-start !important;
+        padding: 10px 62px 10px 10px !important;
+        margin-left: 0 !important;
+        gap: 10px !important;
+    }
+
+    /* Edit / Delete buttons: move to a full-width row below the content */
+    .activity-actions {
+        width: 100%;
+        display: flex !important;
+        justify-content: flex-end;
+        gap: 6px;
+        padding-top: 8px;
+        margin-top: 2px;
+        border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    /* Shrink icon container on mobile */
+    .activity-icon-container {
+        min-width: 40px !important;
+        width: 40px !important;
+        height: 40px !important;
+        margin-left: 0 !important;
+        border-radius: 8px !important;
+    }
+
+    .activity-icon-container svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    /* Page header: shrink title, let actions wrap */
+    .page-header h1 {
+        font-size: 1.4rem !important;
+    }
+
+    /* Trip meta row: wrap on mobile */
+    .trip-meta-row {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        padding: 10px 12px !important;
+    }
+
+    /* Tabs: scrollable, don't wrap */
+    .tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+        padding-bottom: 2px;
+    }
+
+    .tab {
+        padding: 0.65rem 1rem;
+        white-space: nowrap;
+        font-size: 0.85rem;
+    }
+}

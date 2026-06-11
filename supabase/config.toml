@@ -1,0 +1,22 @@
+
+[functions.whatsapp-nightly]
+enabled = true
+verify_jwt = true
+import_map = "./functions/whatsapp-nightly/deno.json"
+# Uncomment to specify a custom file path to the entrypoint.
+# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
+entrypoint = "./functions/whatsapp-nightly/index.ts"
+# Specifies static files to be bundled with the function. Supports glob patterns.
+# For example, if you want to serve static HTML pages in your function:
+# static_files = [ "./functions/whatsapp-nightly/*.html" ]
+
+[functions.whatsapp-update]
+enabled = true
+verify_jwt = true
+import_map = "./functions/whatsapp-update/deno.json"
+# Uncomment to specify a custom file path to the entrypoint.
+# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
+entrypoint = "./functions/whatsapp-update/index.ts"
+# Specifies static files to be bundled with the function. Supports glob patterns.
+# For example, if you want to serve static HTML pages in your function:
+# static_files = [ "./functions/whatsapp-update/*.html" ]

@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(supabase login *)",
+      "Bash(npx vite *)",
+      "Bash(npx tsc *)",
+      "WebFetch(domain:dspncdn.com)",
+      "Bash(npm run *)",
+      "Read(//c/Users/abc/AppData/Local/Temp/claude/C--Users-abc-cluade-my-app/e0c0a23a-bb62-44e9-98ed-935812a0c379/tasks/**)",
+      "Bash(grep -n \"^        </div>$\\\\|^    </div>$\\\\|^        </footer>\" /c/Users/abc/cluade/my-app/src/pages/LandingPage.tsx)",
+      "Bash(NODE_OPTIONS=\"--max-old-space-size=4096\" npm run build)",
+      "Bash(findstr /s \"timeline-day\\\\|day-header\\\\|day-activities\" src --include=\"*.css\" --include=\"*.scss\")",
+      "Bash(npm list *)",
+      "Bash(npm install *)",
+      "Bash(dir dist *)",
+      "Bash(xargs grep -l \"timezone\")"
+    ]
+  }
+}

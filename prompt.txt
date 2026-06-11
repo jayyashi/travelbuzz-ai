@@ -1,0 +1,9 @@
+I have a bug in the video maker. When a video is downloaded, it plays correctly (e.g. 44 seconds) but the metadata duration is wrong — it shows a much shorter time (e.g. 4 seconds). This causes Instagram to only show the short duration instead of the full video.The root cause is likely one of these — please check and fix:
+
+1. If using MediaRecorder API: The videoBitsPerSecond or timecode is being set incorrectly. After recording stops, the Blob's duration metadata isn't being fixed before download.
+
+2. If using canvas + ffmpeg.wasm: The -t duration flag or frame timing passed to FFmpeg is 10x too short (e.g. milliseconds being passed where seconds are expected, or vice versa).
+
+3. If stitching frames manually: The frame rate (fps) multiplied by frame count doesn't match the actual duration written to the MP4 header.
+
+The fix should ensure the MP4 moov atom has the correct duration field matching actual playback length. One reliable fix is to run the output through ffmpeg -i input.mp4 -c copy output.mp4 which rewrites correct metadata. If using ffmpeg.wasm, add this as a post-processing step.

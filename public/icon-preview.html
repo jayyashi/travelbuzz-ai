@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100vw; height: 100vh; overflow: hidden; background: #000; }
+
+  .icon {
+    width: 100vw; height: 100vh;
+    background: #000;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 32px;
+    position: relative;
+  }
+
+  /* Subtle radial glow behind logo */
+  .glow {
+    position: absolute;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -58%);
+    pointer-events: none;
+  }
+
+  .logo-img {
+    position: relative; z-index: 2;
+    width: 320px; height: auto;
+    object-fit: contain;
+  }
+</style>
+</head>
+<body>
+  <div class="icon">
+    <div class="glow"></div>
+
+    <!-- "b" pin logo — SVG recreation matching the actual brand icon -->
+    <svg style="position:relative;z-index:2;filter:drop-shadow(0 0 18px rgba(212,175,55,0.5))"
+         width="200" height="240" viewBox="0 0 100 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gold" x1="0" y1="0" x2="0.5" y2="1">
+          <stop offset="0%" stop-color="#f5c842"/>
+          <stop offset="100%" stop-color="#c8920a"/>
+        </linearGradient>
+      </defs>
+      <!-- Stem of "b" (left vertical stroke, rounded top) -->
+      <rect x="18" y="8" width="20" height="68" rx="10" fill="url(#gold)"/>
+      <!-- Bowl of "b" = circle top of pin -->
+      <circle cx="57" cy="60" r="30" fill="url(#gold)"/>
+      <!-- Pin tail pointing down -->
+      <path d="M36 78 Q36 108 57 122 Q78 108 78 78 Z" fill="url(#gold)"/>
+      <!-- Black hole inside circle -->
+      <circle cx="57" cy="58" r="14" fill="#000"/>
+      <!-- White dot (pin hole reflection) -->
+      <circle cx="57" cy="58" r="6" fill="#fff"/>
+    </svg>
+
+    <!-- TravelBuzz.ai wordmark logo -->
+    <img class="logo-img" src="../src/assets/travelbuzz-logo.png" alt="TravelBuzz.ai" />
+  </div>
+</body>
+</html>

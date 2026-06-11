@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://travelbuzz.ai/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://travelbuzz.ai/faq</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://travelbuzz.ai/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://travelbuzz.ai/blog/ai-travel-itinerary-60-seconds</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://travelbuzz.ai/blog/whatsapp-travel-notifications-travel-agents</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://travelbuzz.ai/blog/best-tools-travel-agents-2026</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://travelbuzz.ai/blog/split-group-travel-expenses</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://travelbuzz.ai/blog/shareable-trip-link-travel-agents</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://travelbuzz.ai/blog/cinematic-travel-reel-trip-memories</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://travelbuzz.ai/blog/find-my-crew-live-location-group-travel</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://travelbuzz.ai/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://travelbuzz.ai/explore</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url><loc>https://travelbuzz.ai/explore/bali-7-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/thailand-10-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/singapore-5-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/dubai-4-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/paris-5-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/london-5-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/tokyo-7-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/new-york-5-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/maldives-5-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/barcelona-5-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/vietnam-10-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/sri-lanka-7-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/rajasthan-7-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/kerala-5-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/manali-5-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/goa-4-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/ladakh-7-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/philippines-7-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/istanbul-5-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/greece-7-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/japan-14-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/italy-10-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/switzerland-7-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/new-zealand-10-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/australia-14-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/canada-10-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/mexico-7-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/morocco-7-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/portugal-7-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/amsterdam-4-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/kasol-3-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/coorg-3-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/spiti-valley-8-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/north-east-india-10-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/bhutan-6-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/andaman-5-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/leh-ladakh-road-trip-7-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/pondicherry-3-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/ooty-3-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/munnar-3-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/saudi-arabia-5-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/egypt-7-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/jordan-5-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/iceland-7-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/peru-10-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/costa-rica-7-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/south-africa-10-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/santorini-4-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/prague-4-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://travelbuzz.ai/explore/maldives-honeymoon-5-days</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+</urlset>
