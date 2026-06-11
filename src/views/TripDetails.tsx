@@ -21,6 +21,9 @@ import { ItineraryReviewModal } from '../components/ItineraryReviewModal';
 import { formatDate } from '../utils/dateUtils';
 import { TRAVEL_TIMEZONES, guessDestinationTimezone } from '../utils/timezoneUtils';
 
+// Keep in sync with ADMIN_EMAIL in MasterAdmin.tsx
+const ADMIN_EMAIL = 'jau205@gmail.com';
+
 // Helper for icons
 const getActivityIcon = (activity: any) => {
     const text = (activity.name + (activity.description || '')).toLowerCase();
@@ -56,6 +59,7 @@ export function TripDetails() {
     const { id } = useParams<{ id: string }>();
     const [trip, setTrip] = useState<Trip | null>(null);
     const [loading, setLoading] = useState(true);
+    const [accessDenied, setAccessDenied] = useState(false);
     const [activeTab, setActiveTab] = useState<'itinerary' | 'documents' | 'travelers' | 'helplines' | 'packing'>('itinerary');
     usePageMeta(
         trip ? `${trip.title} — TravelBuzz.ai` : 'Trip Details — TravelBuzz.ai',
@@ -76,6 +80,16 @@ export function TripDetails() {
             if (id) {
                 setLoading(true);
                 const data = await supabaseStore.getTrip(id);
+
+                // Only the agent who built this trip (or the master admin) may manage it
+                const user = supabaseStore.getCurrentUser();
+                const canAccess = !!data && !!user && (data.agentId === user.id || user.email === ADMIN_EMAIL);
+                if (data && !canAccess) {
+                    setAccessDenied(true);
+                    setLoading(false);
+                    return;
+                }
+
                 setTrip(data);
 
                 // Fetch travelers
@@ -461,6 +475,13 @@ export function TripDetails() {
     };
 
     if (loading) return <div style={{ padding: '2rem', textAlign: 'center' }}><Loader className="animate-spin" /> Loading trip...</div>;
+    if (accessDenied) return (
+        <div style={{ padding: '4rem 2rem', textAlign: 'center' }}>
+            <h2 style={{ marginBottom: '8px' }}>Access denied</h2>
+            <p style={{ color: 'rgba(255,255,255,0.5)', marginBottom: '20px' }}>This trip belongs to another account. Only the agent who created it can manage it.</p>
+            <a href="/dashboard" style={{ color: '#D4AF37', fontWeight: 700 }}>Go to my dashboard</a>
+        </div>
+    );
     if (!trip) return <div>Trip not found</div>;
 
 

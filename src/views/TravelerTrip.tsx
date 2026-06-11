@@ -27,7 +27,9 @@ import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import type { Trip, TripPhoto } from '../types';
 import { compressImage } from '../utils/imageCompression';
-import { ReelGenerator } from '../components/ReelGenerator';
+// Client-only: ReelGenerator pulls in react-globe.gl, which touches `window` at import time and breaks SSR
+import nextDynamic from 'next/dynamic';
+const ReelGenerator = nextDynamic(() => import('../components/ReelGenerator').then(m => m.ReelGenerator), { ssr: false });
 import clsx from 'clsx';
 import { useActivityAlerts } from '../hooks/useActivityAlerts';
 import { generateTripICS } from '../utils/calendarUtils';

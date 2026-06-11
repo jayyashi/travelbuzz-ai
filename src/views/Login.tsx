@@ -25,8 +25,13 @@ export function Login() {
         try {
             const user = await supabaseStore.login(email.trim(), password);
             if (user) {
-                const pending = localStorage.getItem('pendingTemplate');
-                navigate(pending ? `/dashboard?template=${pending}` : '/dashboard');
+                const redirect = new URLSearchParams(window.location.search).get('redirect');
+                if (redirect && redirect.startsWith('/') && !redirect.startsWith('//')) {
+                    navigate(redirect);
+                } else {
+                    const pending = localStorage.getItem('pendingTemplate');
+                    navigate(pending ? `/dashboard?template=${pending}` : '/dashboard');
+                }
             } else {
                 setError('Login failed. Please check your credentials.');
             }

@@ -1,5 +1,3 @@
-import heic2any from 'heic2any';
-
 export const compressImage = async (file: File, maxWidth = 1080, maxHeight = 1920, quality = 0.7): Promise<File> => {
     let processingFile: File | Blob = file;
 
@@ -11,6 +9,8 @@ export const compressImage = async (file: File, maxWidth = 1080, maxHeight = 192
 
     if (isHeic) {
         try {
+            // Lazy-load: heic2any touches `window` at import time, which breaks SSR
+            const { default: heic2any } = await import('heic2any');
             const convertedBlob = await heic2any({
                 blob: file,
                 toType: 'image/jpeg',

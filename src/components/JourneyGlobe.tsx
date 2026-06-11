@@ -1,5 +1,10 @@
-import { useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
-import Globe from 'react-globe.gl';
+'use client';
+import { useEffect, useRef, useImperativeHandle, forwardRef, useState } from 'react';
+import type { ComponentType } from 'react';
+
+// react-globe.gl (via three-globe) touches `window` at import time, so it must
+// be loaded in the browser only — a static import here breaks SSR.
+let GlobeComponent: ComponentType<any> | null = null;
 
 interface JourneyGlobeProps {
   start: { lat: number; lng: number };
@@ -15,6 +20,17 @@ export interface JourneyGlobeHandle {
 const JourneyGlobe = forwardRef<JourneyGlobeHandle, JourneyGlobeProps>(({ start, end, width, height }, ref) => {
   const globeRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [globeReady, setGlobeReady] = useState(!!GlobeComponent);
+
+  useEffect(() => {
+    if (GlobeComponent) return;
+    let active = true;
+    import('react-globe.gl').then((mod) => {
+      GlobeComponent = mod.default;
+      if (active) setGlobeReady(true);
+    });
+    return () => { active = false; };
+  }, []);
 
   useImperativeHandle(ref, () => ({
     getCanvas: () => {
@@ -23,7 +39,7 @@ const JourneyGlobe = forwardRef<JourneyGlobeHandle, JourneyGlobeProps>(({ start,
   }));
 
   useEffect(() => {
-    if (globeRef.current) {
+    if (globeReady && globeRef.current) {
         // Configure cinematic look
         globeRef.current.controls().autoRotate = false;
         globeRef.current.controls().enableZoom = false;
@@ -45,7 +61,7 @@ const JourneyGlobe = forwardRef<JourneyGlobeHandle, JourneyGlobeProps>(({ start,
         }, 300);
         return () => clearTimeout(timer);
     }
-  }, [start.lat, start.lng, end.lat, end.lng]);
+  }, [globeReady, start.lat, start.lng, end.lat, end.lng]);
 
   const arcsData = [
     {
@@ -57,9 +73,10 @@ const JourneyGlobe = forwardRef<JourneyGlobeHandle, JourneyGlobeProps>(({ start,
     }
   ];
 
+  const Globe = GlobeComponent;
   return (
     <div ref={containerRef} style={{ width, height, position: 'relative' }}>
-      <Globe
+      {globeReady && Globe && <Globe
         ref={globeRef}
         width={width}
         height={height}
@@ -78,7 +95,7 @@ const JourneyGlobe = forwardRef<JourneyGlobeHandle, JourneyGlobeProps>(({ start,
         arcStroke={2}
         arcAltitude={0.3}
 
-      />
+      />}
     </div>
   );
 });
