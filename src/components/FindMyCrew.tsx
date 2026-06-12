@@ -203,8 +203,8 @@ export function FindMyCrew({ tripId }: Props) {
 
     // Merge Presence (real-time) + DB (persisted) — Presence takes priority per device_id
     // Computed here (before any useEffects) so it's available in the effects' dependency arrays
-    const presenceDeviceIds = new Set(crewMembers.map(m => m.deviceId).filter(Boolean));
-    const dbOnlyMembers = dbMembers.filter(m => !presenceDeviceIds.has(m.presenceRef.replace('db-', '')));
+    const presenceDeviceIds = new Set(crewMembers.map(m => m.deviceId || m.presenceRef));
+    const dbOnlyMembers = dbMembers.filter(m => !m.deviceId || !presenceDeviceIds.has(m.deviceId));
     const allMembers = [...crewMembers, ...dbOnlyMembers];
 
     const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -323,29 +323,38 @@ export function FindMyCrew({ tripId }: Props) {
             channelRef.current = null;
         }
 
-        const ch = supabase.channel(`find-my-crew-${tripId}`);
+        // Stable presence key per device — re-tracks and reconnects REPLACE the
+        // previous server-side presence entry instead of piling up new ones
+        const ch = supabase.channel(`find-my-crew-${tripId}`, {
+            config: { presence: { key: deviceIdRef.current } },
+        });
         channelRef.current = ch;
 
         ch.on('presence', { event: 'sync' }, () => {
             const raw = ch.presenceState() as Record<string, any[]>;
-            const members: CrewMember[] = [];
-            Object.entries(raw).forEach(([_key, presences]) => {
+            // Collapse to one entry per device, keeping the freshest meta — a
+            // flapping connection can leave old + new presence entries alive
+            // server-side at once, which otherwise duplicates the same person
+            const byDevice = new Map<string, any>();
+            Object.entries(raw).forEach(([key, presences]) => {
                 presences.forEach((p: any) => {
-                    if (p.lat && p.lng && p.name) {
-                        members.push({
-                            presenceRef: p.presence_ref || _key,
-                            name: p.name,
-                            lat: p.lat,
-                            lng: p.lng,
-                            color: p.color,
-                            initials: getInitials(p.name),
-                            timestamp: p.timestamp || Date.now(),
-                            isSelf: p.session_id === sessionId.current,
-                            deviceId: p.device_id,
-                        });
-                    }
+                    if (!(p.lat && p.lng && p.name)) return;
+                    const id = p.device_id || p.session_id || key;
+                    const prev = byDevice.get(id);
+                    if (!prev || (p.timestamp || 0) > (prev.timestamp || 0)) byDevice.set(id, p);
                 });
             });
+            const members: CrewMember[] = Array.from(byDevice.entries()).map(([id, p]) => ({
+                presenceRef: id,
+                name: p.name,
+                lat: p.lat,
+                lng: p.lng,
+                color: p.color,
+                initials: getInitials(p.name),
+                timestamp: p.timestamp || Date.now(),
+                isSelf: p.session_id === sessionId.current || p.device_id === deviceIdRef.current,
+                deviceId: p.device_id,
+            }));
             setCrewMembers(members);
         });
 
