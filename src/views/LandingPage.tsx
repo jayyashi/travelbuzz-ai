@@ -1,5 +1,5 @@
 ﻿'use client';
-import { useEffect, useState, useRef, useMemo } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { Link } from '../lib/router';
 import { AppFooter } from '../components/AppFooter';
@@ -71,10 +71,11 @@ const SECTIONS: { id: string; label: React.ReactNode; icon: React.ReactNode; col
 function ExploreSliderSection() {
     const sliderRef = useRef<HTMLDivElement>(null);
 
-    // Pick 10 random destinations (stable per session)
-    const cards = useMemo(() => {
-        const shuffled = [...destinations].sort(() => Math.random() - 0.5);
-        return shuffled.slice(0, 10);
+    // First render must match the SSR HTML, so start with a deterministic
+    // list and shuffle only on the client after hydration
+    const [cards, setCards] = useState(() => destinations.slice(0, 10));
+    useEffect(() => {
+        setCards([...destinations].sort(() => Math.random() - 0.5).slice(0, 10));
     }, []);
 
     const scroll = (dir: 'left' | 'right') => {
